@@ -1,0 +1,16 @@
+{
+  "component": {
+    "com.example.EmissionAnalyzer": {
+      "author": "LuisGarcia",
+      "version": "1.0.0",
+      "build": {
+        "build_system": "zip"
+      },
+      "publish": {
+        "region": "us-east-2",
+        "bucket": "lab4-components-luisgarcia"
+      }
+    }
+  },
+  "gdk_version": "1.0.0"
+}

@@ -1,0 +1,41 @@
+{
+  "RecipeFormatVersion": "2020-01-25",
+  "ComponentName": "com.example.EmissionAnalyzer",
+  "ComponentVersion": "1.0.2",
+  "ComponentDescription": "Analyzes vehicle CO2 emissions and returns max CO2 per device",
+  "ComponentPublisher": "LuisGarcia",
+  "ComponentConfiguration": {
+    "DefaultConfiguration": {
+      "accessControl": {
+        "aws.greengrass.ipc.mqttproxy": {
+          "com.example.EmissionAnalyzer:mqttproxy:1": {
+            "policyDescription": "Allow pub/sub to car emission topics",
+            "operations": [
+              "aws.greengrass#SubscribeToIoTCore",
+              "aws.greengrass#PublishToIoTCore"
+            ],
+            "resources": [
+              "cars/emission",
+              "cars/result/*"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Manifests": [
+    {
+      "Platform": {
+        "os": "darwin"
+      },
+      "Lifecycle": {
+        "Run": "python3 {artifacts:path}/process_emission.py"
+      },
+      "Artifacts": [
+        {
+          "URI": "s3://lab4-components-luisgarcia/com.example.EmissionAnalyzer/1.0.0/process_emission.py"
+        }
+      ]
+    }
+  ]
+}
